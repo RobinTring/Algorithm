@@ -14,14 +14,14 @@ public struct AlgorithmError: Error {
 public protocol AlgorithmNode {
     associatedtype T: Codable & Hashable
     /// 算法标题
-    var title: String { get set }
+    var title: String { get }
     /// 算法描述
-    var content: String { get set }
+    var content: String { get }
     
     /// 参数样例
-    var paramsExample: String { get set }
+    var paramsExample: String { get }
     
-    var references: [String] { get set }
+    var references: [String] { get }
     /// 代码文件路径，为定位源码文件
     func filePath() -> String
     /// 算法核心逻辑
@@ -29,9 +29,12 @@ public protocol AlgorithmNode {
 }
 
 public extension AlgorithmNode {
-    func codeUrl() -> URL? {
-        let file = filePath()
-        return URL(string: "https://github.com/RobinTring/Algorithm/blob/main/Sources/".appending(file))
+    
+    func codeRawUrl() -> URL? {
+        guard let file = filePath().split(separator: "Algorithm").last else { return nil }
+        return URL(
+            string: "https://raw.githubusercontent.com/RobinTring/Algorithm/refs/heads/main/Sources/Algorithm".appending(file)
+        )
     }
     
     func run(withJson json: String) throws(AlgorithmError) -> String {

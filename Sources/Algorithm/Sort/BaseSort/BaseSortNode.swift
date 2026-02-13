@@ -11,9 +11,13 @@ struct SortInput: Codable, Hashable {
 
 class BaseSortNode: AlgorithmNode {
     
-    var title: String = "base"
+    var title: String {
+        fatalError("Not achieved")
+    }
     
-    var content: String = "base"
+    var content: String {
+        fatalError("Not achieved")
+    }
     
     var paramsExample: String = """
         {
@@ -22,8 +26,7 @@ class BaseSortNode: AlgorithmNode {
         """
     
     var references: [String] = [
-        "https://blog.csdn.net/qq_51664685/article/details/124427443",
-        "https://www.baidu.com"
+        "https://blog.csdn.net/qq_51664685/article/details/124427443"
     ]
     
     func filePath() -> String {
