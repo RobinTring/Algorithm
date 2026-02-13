@@ -10,20 +10,14 @@ struct SortInput: Codable, Hashable {
 }
 
 class BaseSortNode: AlgorithmNode {
-    
-    var title: String {
-        fatalError("Not achieved")
-    }
-    
-    var content: String {
-        fatalError("Not achieved")
-    }
-    
-    var paramsExample: String = """
+        
+    var paramsExample: String {
+        """
         {
             "numbers": [3,5,1,-7,4,9,-6,8,10,4]
         }
         """
+    }
     
     var references: [String] = [
         "https://blog.csdn.net/qq_51664685/article/details/124427443"
@@ -36,5 +30,4 @@ class BaseSortNode: AlgorithmNode {
     func run(with param: SortInput) -> String {
         fatalError("Not achieved")
     }
-    
 }

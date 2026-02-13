@@ -13,10 +13,6 @@ public struct AlgorithmError: Error {
 
 public protocol AlgorithmNode {
     associatedtype T: Codable & Hashable
-    /// 算法标题
-    var title: String { get }
-    /// 算法描述
-    var content: String { get }
     
     /// 参数样例
     var paramsExample: String { get }
@@ -32,9 +28,8 @@ public extension AlgorithmNode {
     
     func codeRawUrl() -> URL? {
         guard let file = filePath().split(separator: "Algorithm").last else { return nil }
-        return URL(
-            string: "https://raw.githubusercontent.com/RobinTring/Algorithm/refs/heads/main/Sources/Algorithm".appending(file)
-        )
+        let base = "https://raw.githubusercontent.com/RobinTring/Algorithm/refs/heads/main/Sources/Algorithm"
+        return URL(string: base.appending(file))
     }
     
     func run(withJson json: String) throws(AlgorithmError) -> String {
@@ -51,17 +46,5 @@ public extension AlgorithmNode {
         } catch {
             throw AlgorithmError(message: "参数格式错误: \(error.localizedDescription)")
         }
-    }
-}
-
-public enum AlgorithmName: String, CaseIterable, Hashable {
-    case bubble
-    
-    public func algorithmBody() -> any AlgorithmNode {
-        switch self {
-        case .bubble:
-            return BubbleSortNode()
-        }
-        fatalError("")
     }
 }
