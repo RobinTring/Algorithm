@@ -31,8 +31,7 @@ public protocol AlgorithmNode {
 public extension AlgorithmNode {
     func codeUrl() -> URL? {
         let file = filePath()
-        // TODO: <longfei> 带适配
-        return URL(string: "https://gitee.com/robincoding/moon/blob/master/Moon/".appending(file))
+        return URL(string: "https://github.com/RobinTring/Algorithm/blob/main/Sources/".appending(file))
     }
     
     func run(withJson json: String) throws(AlgorithmError) -> String {
