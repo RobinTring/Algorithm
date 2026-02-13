@@ -1,15 +1,9 @@
 //
-//   BubbleSortNode.swift
-//  Algorithm
-//
-//  Created by feiyu on 2026/2/13.
-//
+import Foundation
 
 class BubbleSortNode: BaseSortNode {
     
-    override func filePath() -> String {
-        #filePath
-    }
+    override func filePath() -> String { #filePath }
     
     override func run(with param: SortInput) -> String {
         var result = param.numbers
