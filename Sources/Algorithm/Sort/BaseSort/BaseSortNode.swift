@@ -19,9 +19,9 @@ class BaseSortNode: AlgorithmNode {
         """
     }
     
-    var references: [String] = [
-        "https://blog.csdn.net/qq_51664685/article/details/124427443"
-    ]
+    func references() -> [String] {
+        ["https://blog.csdn.net/qq_51664685/article/details/124427443"]
+    }
     
     func filePath() -> String {
         fatalError("Not achieved")

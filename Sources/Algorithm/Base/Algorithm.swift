@@ -17,7 +17,7 @@ public protocol AlgorithmNode {
     /// 参数样例
     var paramsExample: String { get }
     
-    var references: [String] { get }
+    func references() -> [String]
     /// 代码文件路径，为定位源码文件
     func filePath() -> String
     /// 算法核心逻辑
