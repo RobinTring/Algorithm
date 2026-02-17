@@ -8,13 +8,29 @@
 import Foundation
 
 public enum AlgorithmName: String, CaseIterable, Hashable {
-    case bubbleSort
-    case selectionSort
-    case insertSort
-    case shellSort
-    case mergeSort
-    case quickSort
-    case heapSort
+    case bubbleSort = "冒泡排序"
+    case selectionSort = "选择排序"
+    case insertSort = "插入排序"
+    case shellSort = "希尔排序"
+    case mergeSort = "归并排序"
+    case quickSort = "快速排序"
+    case heapSort = "堆排序"
+    
+    case binarySearch = "二分查找"
+    case twoDimArrayLookup = "二维二分查找"
+    
+    case reverseList = "翻转链表"
+    case reverseListBetween = "链表区间翻转"
+    case reverseKGroupList = "链表分段翻转"
+    case mergeList = "合并链表"
+    case mergeKLists = "多链表合并"
+    case listHasCycle = "链表是否有环"
+    case findKthToTail = "链表最后n个数"
+    case removeNthFromEnd = "删除倒数第n个数"
+    
+    case preOrderTree = "树前序遍历"
+    case inOrderTree = "中序遍历"
+    case postOrderTree = "后续遍历"
     
     public func algorithmBody() -> any AlgorithmNode {
         switch self {
@@ -25,18 +41,19 @@ public enum AlgorithmName: String, CaseIterable, Hashable {
         case .mergeSort: MergeSortNode()
         case .quickSort: QuickSortNode()
         case .heapSort: HeapSortNode()
-        }
-    }
-    
-    public var name: String {
-        switch self {
-        case .bubbleSort: "冒泡"
-        case .selectionSort: "选择排序"
-        case .insertSort: "插入排序"
-        case .shellSort: "希尔排序"
-        case .mergeSort: "归并排序"
-        case .quickSort: "快速排序"
-        case .heapSort: "堆排序"
+        case .binarySearch: BinarySearchNode()
+        case .twoDimArrayLookup: TwoDimArrayLookupNode()
+        case .reverseList: ReverseListNode()
+        case .reverseListBetween: ReverseListBetweenNode()
+        case .reverseKGroupList: ReverseKGroupNode()
+        case .mergeList: MergeListNode()
+        case .mergeKLists: MergeKListsNode()
+        case .listHasCycle: ListHasCycleNode()
+        case .findKthToTail: FindKthToTailNode()
+        case .removeNthFromEnd: RemoveNthFromEndNode()
+        case .preOrderTree: PreOrderTreeNode()
+        case .inOrderTree: InOrderTreeNode()
+        case .postOrderTree: PostOrderTreeNode()
         }
     }
     
@@ -140,6 +157,28 @@ public enum AlgorithmName: String, CaseIterable, Hashable {
             ————————————————
             版权声明：本文为CSDN博主「calm_JayBo」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
             原文链接：https://blog.csdn.net/qq_51664685/article/details/124427443
+            """
+            
+        case .binarySearch:
+            """
+            ‌二分查找（Binary Search），又称折半查找，是一种在有序数组或有序序列中查找特定元素的高效搜索算法，其核心思想是通过不断将搜索区间减半来快速定位目标值‌。‌
+            
+            算法原理与步骤
+            
+            二分查找基于分治策略，要求数据必须按关键字有序（升序或降序）。其基本步骤如下：‌
+            1 初始化搜索区间‌：
+                设左边界 left 为 0，右边界 right 为数组长度减 1（对应闭区间 [left, right]）。
+            ‌‌2 计算中间位置‌：
+                取中间索引 mid = left + (right - left) / 2（防止整数溢出）。‌‌
+            3 比较与调整‌： 
+                若中间元素等于目标值，则查找成功，返回 mid。‌
+                若中间元素大于目标值，说明目标值在左半部分，将 right 更新为 mid - 1。‌‌
+                若中间元素小于目标值，说明目标值在右半部分，将 left 更新为 mid + 1。‌‌
+            4 重复迭代‌：重复步骤 2-3，直到找到目标值或区间为空（即 left > right），此时查找失败。‌
+            """
+        default:
+            """
+            未补充
             """
         }
     }

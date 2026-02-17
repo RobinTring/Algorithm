@@ -8,11 +8,11 @@ enum Info {
 }
 
 public struct AlgorithmError: Error {
-    let message: String
+    public let message: String
 }
 
 public protocol AlgorithmNode {
-    associatedtype T: Codable & Hashable
+    associatedtype T: Codable
     
     /// 参数样例
     var paramsExample: String { get }
